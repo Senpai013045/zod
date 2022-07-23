@@ -10,7 +10,7 @@ export type User = z.infer<typeof UserSchema>;
 
 const ApiResponseSchema = z.array(UserSchema);
 
-export const getData =async () => {
+export const getData = async () => {
     const response = await fetch("http://localhost:8080");
     if (!response.ok){
         throw new Error(response.statusText)
@@ -20,6 +20,5 @@ export const getData =async () => {
     if(parsed.success){
         return parsed.data
     }
-    console.error(parsed.error)
     throw new Error("Api response invalid")
 }
